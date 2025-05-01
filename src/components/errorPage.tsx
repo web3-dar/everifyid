@@ -18,7 +18,7 @@ const ErrorPage: React.FC = () => {
   // Fetch error content from backend
   const fetchErrorContent = async () => {
     try {
-      const res = await fetch("http://localhost/myBackend/admin_api.php?action=fetch_error_content");
+      const res = await fetch("https://ivory-dunlin-618889.hostingersite.com/myBackend/admin_api.php?action=fetch_error_content");
       const data = await res.json();
       
       setTitle(data.title || "");

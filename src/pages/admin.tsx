@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // Replace JSONBin variables with appropriate backend URLs
-const API_URL = "http://localhost/myBackend/admin_api.php"; // Adjust this if needed
+const API_URL = "https://ivory-dunlin-618889.hostingersite.com/myBackend/admin_api.php"; // Adjust this if needed
 
 const AdminPage = () => {
   const [formList, setFormList] = useState<string[]>([]);

