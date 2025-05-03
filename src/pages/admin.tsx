@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ImageTable from "../components/adminExplanation";
 
 // Replace JSONBin variables with appropriate backend URLs
 const API_URL = "https://ivory-dunlin-618889.hostingersite.com/myBackend/admin_api.php"; // Adjust this if needed
@@ -295,6 +296,7 @@ const AdminPage = () => {
 
 
   return (
+    <>
     <div className="bg-gray-800 h-screen p-9">
       <h2 className="text-3xl text-[#ccc] mb-9">Admin:  USER 1</h2>
       <select onChange={handleChange}>
@@ -492,6 +494,12 @@ const AdminPage = () => {
         </form>
       </div>
     </div>
+
+    <div className="mt-[550px]">
+      
+    <ImageTable/>
+    </div>
+    </>
   );
 };
 
