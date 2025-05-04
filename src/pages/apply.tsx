@@ -462,7 +462,7 @@ const LoadingOverlay = () => (
             type="submit"
             className="bg-blue-900 hover:bg-blue-800 text-white border border-black font-semibold py-3 px-8 shadow-md transition-all duration-300 mt-4"
           >
-            Continue Verification
+            Start Verification
           </button>
 
           </div>
